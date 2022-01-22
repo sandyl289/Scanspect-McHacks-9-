@@ -1,18 +1,16 @@
-//var axios = require("axios");
-
 document.getElementById("test").onclick = function () {
 
-  let fileInput = $("imgInput").files;
+  let fileInput = document.getElementById("imgInput").files[0];
 
-  let formData = new FormData(fileInput[0]);
-  formData.append("image", fileInput);
+  let formData = new FormData();
+  formData.append("imgInput", fileInput);
 
   axios
-  .post("localhost:3000/upload", formData, {
+  .post("http://localhost:3000/upload", formData, {
       headers: { "Content-Type": "multipart/form-data" },
   })
   .then((res) => {
-      console.log("this works!");
+      console.log(res.data);
   })
   .catch((e) => {
       console.log(e.response.data);

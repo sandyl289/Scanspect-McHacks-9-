@@ -38,30 +38,27 @@ app.post('/upload', (req, res, next) => {
               .then(results => {
                 const labels = results[0].labelAnnotations;
 
+              let potato = false;
+
                 console.log('\n------------Labels:');
-                let potato = false;
                 labels.forEach(label => {
                   console.log(label.description);
                   if (label.description == 'Potato') {
                     potato = true;
                   }
                 });
-                
-                if (potato) {
-                  console.log("This is a potato (☞ﾟヮﾟ)☞");
-                } else {
-                  console.log("This is not a Potato ಥ_ಥ");
-                }
 
                 // Delete file
                 fs.unlinkSync(newPath);
 
+                if (potato) return res.send("This is a potato (☞ﾟヮﾟ)☞");
+                else return res.send("This is not a Potato ಥ_ಥ");
+
               })
               .catch(err => {
                 console.error('ERROR:', err);
+                res.send("Error: " + err);
               });
-
-             return res.send("Complete");
             }
         });
     });

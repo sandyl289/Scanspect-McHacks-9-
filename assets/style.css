@@ -1,3 +1,12 @@
-body {
-  background: purple;
+ :root{
+     --primary-color:#355656; 
+ }
+ 
+.container .px-4{
+    color:var(--primary-color);
 }
+
+.bg-primary .bg-gradient{
+    padding:200px 200px;
+}
+
