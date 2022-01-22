@@ -14,10 +14,10 @@
     <h1>Show File-select Fields</h1>
     
     <h3>Show a file-select field which allows only one file to be chosen:</h3>
-    <form action="/fileupload" enctype="multipart/form-data" method="post">
-      <label for="myfile">Select a file:</label>
-      <input type="file" id="myfile" name="myfile"><br><br>
-      <input type="submit">
+    <form action="/upload" enctype="multipart/form-data" method="post">
+      <label for="imgInput">Select a file:</label>
+      <input type="file" id="imgInput" name="imgInput" accept="image/*"><br><br>
+      <input type="submit" value="Upload">
     </form>
 
 
