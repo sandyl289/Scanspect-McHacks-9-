@@ -1,3 +1,4 @@
+/*
 const express = require('express');
 const app = express();
 const vision = require('@google-cloud/vision');
@@ -7,7 +8,8 @@ const client = new vision.ImageAnnotatorClient({
   keyFilename: '../VisionKeys.json'
 });
 
-const fileName = '../uploads/MountainIcon.png';
+
+const fileName = '../uploads/' + files.filetoupload.originalFilename;
 
 // Performs label detection on the image file
 client
@@ -23,3 +25,4 @@ client
   });
 
 app.listen(5000, '127.0.0.1', () => console.log('Server running'));
+*/
