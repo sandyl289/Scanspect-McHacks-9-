@@ -1,4 +1,5 @@
-document.getElementById("test").onclick = function () {
+// Submit image
+document.getElementById("submit-image").onclick = function () {
 
   let fileInput = document.getElementById("imgInput").files[0];
 
@@ -11,6 +12,7 @@ document.getElementById("test").onclick = function () {
   })
   .then((res) => {
       console.log(res.data);
+      document.getElementById('result').innerText = res.data;
   })
   .catch((e) => {
       console.log(e.response.data);
@@ -18,3 +20,9 @@ document.getElementById("test").onclick = function () {
 
 }
   
+// Display image
+imgInput.onchange = function () {
+  let preview = document.getElementById('preview');
+  preview.src = window.URL.createObjectURL(this.files[0]);
+  preview.classList.remove('d-none');
+}
