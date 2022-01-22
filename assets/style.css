@@ -1,4 +1,3 @@
-:root{
-     --primary-color:#355656; 
- }
- 
+body {
+  background: purple;
+}

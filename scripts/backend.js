@@ -12,9 +12,12 @@ const client = new vision.ImageAnnotatorClient({
 });
 
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '../index.html'));
+  res.sendFile(path.join(__dirname, "../index.html"));
 });
-   
+
+app.use(express.static('../assets/'));
+
+
 app.post('/upload', (req, res, next) => {
     
     const form = new formidable.IncomingForm();
@@ -44,14 +47,14 @@ app.post('/upload', (req, res, next) => {
                   }
                 });
                 
-                    // console.log(label.description) 
                 if (potato) {
                   console.log("This is a potato (☞ﾟヮﾟ)☞");
                 } else {
                   console.log("This is not a Potato ಥ_ಥ");
                 }
 
-                // TODO: Delete file
+                // Delete file
+                fs.unlinkSync(newPath);
 
               })
               .catch(err => {
