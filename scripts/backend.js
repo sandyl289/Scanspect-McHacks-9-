@@ -23,7 +23,7 @@ app.post('/upload', (req, res, next) => {
     const form = new formidable.IncomingForm();
     form.parse(req, function(err, fields, files){
 
-        let newPath = path.join(__dirname, '../uploads') + '/' + files.imgInput.originalFilename;
+        let newPath = path.join(__dirname, '../uploads') + '\\' + files.imgInput.originalFilename;
         let rawData = fs.readFileSync(files.imgInput.filepath);
       
         fs.writeFile(newPath, rawData, function(err){
@@ -51,8 +51,8 @@ app.post('/upload', (req, res, next) => {
                 // Delete file
                 fs.unlinkSync(newPath);
 
-                if (potato) return res.send("This is a potato (☞ﾟヮﾟ)☞");
-                else return res.send("This is not a Potato ಥ_ಥ");
+                if (potato) return res.send("potato");
+                else return res.send("not");
 
               })
               .catch(err => {

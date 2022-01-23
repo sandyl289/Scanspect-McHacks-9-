@@ -5,7 +5,6 @@
 
 h1{
     color: black;
-    font-family: 'Ubuntu', sans-serif;
 }
  
 .crocodile {
@@ -21,22 +20,22 @@ h1{
     background-color: rgb(31, 93, 93); 
     border: none;
     color: white;
-    padding: 15px 15px;
+    padding: 13px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    font-family: 'Ubuntu', sans-serif;
   } 
 
 
   body{
     background-color: #82A3A1;
+    font-family: 'Ubuntu', sans-serif;
   }
 
   #preview {
-    width: 100px;
-    height: 100px;
+    width:70%;
+    max-width: 500px;
   }
 
   #logo {
@@ -44,5 +43,10 @@ h1{
     height: 100%;
     max-width: 250px;
     max-height: 350px;
+  }
+
+  #result{
+    color:#9C6615;
+    font-family: 'Mochiy Pop P One', sans-serif;
   }
 
