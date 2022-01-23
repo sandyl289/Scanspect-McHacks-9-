@@ -1,5 +1,5 @@
 // Submit image
-document.getElementById("submit-image").onclick = function () {
+document.getElementById("submit-image").onclick = function() {
 
   let fileInput = document.getElementById("imgInput").files[0];
 
@@ -16,7 +16,7 @@ document.getElementById("submit-image").onclick = function () {
     console.log("result: " + res.data);
     console.log("result (bool): " + (res.data === "potato"));
     if (res.data === "potato")  {
-      document.getElementById('result').innerText = "This is a potato (☞ﾟヮﾟ)☞";
+      document.getElementById('result').innerText = "☜(ﾟヮﾟ☜) This is a potato";
       audioYes();
     } else {
       document.getElementById('result').innerText = "This is not a Potato ಥ_ಥ";
@@ -30,13 +30,23 @@ document.getElementById("submit-image").onclick = function () {
   });
 
 }
+
+// Select image
+document.getElementById("choose-image").onclick = function() {
+  document.getElementById("imgInput").click();
+}
+
+
   
 // Display image
 imgInput.onchange = function () {
   let preview = document.getElementById('preview');
   preview.src = window.URL.createObjectURL(this.files[0]);
   preview.classList.remove('d-none');
+  document.getElementById("submit-image").classList.remove("d-none");
 }
+
+// Audio
 
 function audioYes() {
   let audioObjYes = new Audio('audio/thisPotato.mp3');
@@ -49,39 +59,61 @@ function audioNo() {
 }
 
 //---------------------Draggable stuff
+// Inspired from https://codepen.io/dcode-software/pen/xxwpLQo
 
-document.getElementById(".drop-zone__input").forEach((inputElement) => {
-  const dropZoneElement = inputElement.closest(".drop-zone");
+const droppableArea = document.getElementById('droppable-area');
+const droppableInput = document.getElementById('droppable-input');
 
-  dropZoneElement.addEventListener("click", (e) => {
-    inputElement.click();
-  });
+droppableArea.addEventListener("click", (e) => {
+  droppableInput.click();
+});
 
-  inputElement.addEventListener("change", (e) => {
-    if (inputElement.files.length) {
-      updateThumbnail(dropZoneElement, inputElement.files[0]);
-    }
-  });
+droppableInput.addEventListener("change", (e) => {
+  if (droppableInput.files.length) {
+    updateThumbnail(droppableArea, droppableInput.files[0]);
+  }
+});
 
-  dropZoneElement.addEventListener("dragover", (e) => {
-    e.preventDefault();
-    dropZoneElement.classList.add("drop-zone--over");
-  });
+droppableArea.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  droppableArea.classList.add("droppable-area-hovered");
+});
 
-  ["dragleave", "dragend"].forEach((type) => {
-    dropZoneElement.addEventListener(type, (e) => {
-      dropZoneElement.classList.remove("drop-zone--over");
-    });
-  });
-
-  dropZoneElement.addEventListener("drop", (e) => {
-    e.preventDefault();
-
-    if (e.dataTransfer.files.length) {
-      inputElement.files = e.dataTransfer.files;
-      updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
-    }
-
-    dropZoneElement.classList.remove("drop-zone--over");
+["dragleave", "dragend"].forEach((type) => {
+  droppableArea.addEventListener(type, (e) => {
+    droppableArea.classList.remove("droppable-area-hovered");
   });
 });
+
+droppableArea.addEventListener("drop", (e) => {
+  e.preventDefault();
+
+  if (e.dataTransfer.files.length) {
+    droppableInput.files = e.dataTransfer.files;
+    updateThumbnail(droppableArea, e.dataTransfer.files[0]);
+  }
+
+  droppableArea.classList.remove("droppable-area-hovered");
+});
+
+
+function updateThumbnail(droppableArea, file) {
+  let previewElement = document.getElementById("droppable-item-preview");
+
+  if (!previewElement) {
+    previewElement = document.createElement("div");
+    previewElement.id ="droppable-item-preview";
+    droppableArea.appendChild(previewElement);
+  }
+
+  if (file.type.startsWith("image/")) {
+    const reader = new FileReader();
+
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      previewElement.style.backgroundImage = `url('${reader.result}')`;
+    };
+  } else {
+    previewElement.style.backgroundImage = null;
+  }
+}

@@ -22,35 +22,37 @@
   <header class="header crocodile p-5">
     <div class="container px-4 text-center">
       <img src="images/logo.png" alt="Scanspect's logo" id="logo">
-      <h1 class="lead" style="font-size: 24px;">Scanspect is the best program to identify any pictures! Upload a picture now!</h1> 
+      <h1 class="lead pt-5" style="font-size: 24px;">Scanspect is the best program to identify any pictures! Upload a picture now!</h1> 
     </div>
   </header>
 
   <section class="py-5">
       <div class="container px-4 px-lg-5 my-5">
           <div class="row gx-4 gx-lg-5 align-items-center">
-              <div class="col-md-6">
+              <div class="col-md-6 pb-5">
                   <h1 class="display-5 fw-bolder">What is this item?</h1>
                   <p class="lead">Please select a file:</p>
                   <div>
                     <div>
-                      <input type="file" id="imgInput" accept="image/*">
-                      <button class="btn btn-success button" type="button" id="submit-image">Submit</button>
+                      <button type="button" class="btn btn-success button" id="choose-image">Choose Image</button>
+                      <input type="file" id="imgInput" accept="image/*" class="d-none">
+                      <button type="button" class="btn btn-success button ms-4 d-none" id="submit-image">Submit</button>
                     </div>
                     <div>
                       <div class="pt-5"><img id="preview" class="d-none" src="" alt="Your image" /></div>
-                      <div class="pt-5" id="result"></div>
                     </div>
                   </div>
 
                   <!--Draggable zone-->
-                  
-                  <div class="drop-zone">
-                    <span class="drop-zone__prompt">Drop file here or click to upload</span>
-                    <input type="file" name="myFile" class="drop-zone__input" id="drop-zone__input">
-                  </div>
+
+                  <!-- <div id="droppable-area">
+                    <input type="file" name="droppable-input" id="droppable-input" class="d-none">
+                  </div> -->
                   
               </div>
+              <div class="col-md-6">
+                <div class="pt-5" id="result"></div>
+            </div>
           </div>
       </div>
   </section>

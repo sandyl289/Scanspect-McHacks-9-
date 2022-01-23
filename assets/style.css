@@ -11,94 +11,73 @@ h1{
    background-color: var(--primary-color);
 }
 
+
+.button {
+  background-color: rgb(31, 93, 93); 
+  border: none;
+  color: white;
+  padding: 13px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+} 
+
+
+body{
+  background-color: #82A3A1;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+/* #preview {
+  width:70%;
+  max-width: 500px;
+} */
+
+#logo {
+  width: 100%;
+  height: 100%;
+  max-width: 250px;
+  max-height: 350px;
+}
+
 #result{
-    font-size: 24px;
+  color:#9C6615;
+  font-family: 'Mochiy Pop P One', sans-serif;
+  font-size: 36px;
 }
 
 
-.button {
-    background-color: rgb(31, 93, 93); 
-    border: none;
-    color: white;
-    padding: 13px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-  } 
 
+/* Draggable CSS */
 
-  body{
-    background-color: #82A3A1;
-    font-family: 'Ubuntu', sans-serif;
-  }
+#droppable-area {
+  max-width: 200px;
+  height: 200px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  cursor: pointer;
+  color: #cccccc;
+  border: 4px dashed #009578;
+  border-radius: 10px;
+}
 
-  #preview {
-    width:70%;
-    max-width: 500px;
-  }
+.droppable-area-hovered {
+  border-style: solid;
+}
 
-  #logo {
-    width: 100%;
-    height: 100%;
-    max-width: 250px;
-    max-height: 350px;
-  }
-
-  #result{
-    color:#9C6615;
-    font-family: 'Mochiy Pop P One', sans-serif;
-  }
-
-
-
-  /* Draggable CSS */
-
-  .drop-zone {
-    max-width: 200px;
-    height: 200px;
-    padding: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-family: "Quicksand", sans-serif;
-    font-weight: 500;
-    font-size: 20px;
-    cursor: pointer;
-    color: #cccccc;
-    border: 4px dashed #009578;
-    border-radius: 10px;
-  }
-  
-  .drop-zone--over {
-    border-style: solid;
-  }
-  
-  .drop-zone__input {
-    display: none;
-  }
-  
-  .drop-zone__thumb {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-    background-color: #cccccc;
-    background-size: cover;
-    position: relative;
-  }
-  
-  .drop-zone__thumb::after {
-    content: attr(data-label);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 5px 0;
-    color: #ffffff;
-    background: rgba(0, 0, 0, 0.75);
-    font-size: 14px;
-    text-align: center;
-  }
-  
+#preview, #droppable-item-preview {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 4px;
+  overflow: hidden;
+  background-size: cover;
+  position: relative;
+}
