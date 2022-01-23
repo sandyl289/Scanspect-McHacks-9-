@@ -47,8 +47,9 @@ function audioNo() {
   let audioObjNo = new Audio('audio/notPotato.mp3');
   audioObjNo.play();
 }
+
 //---------------------Draggable stuff
-/*
+
 document.getElementById(".drop-zone__input").forEach((inputElement) => {
   const dropZoneElement = inputElement.closest(".drop-zone");
 
@@ -83,4 +84,4 @@ document.getElementById(".drop-zone__input").forEach((inputElement) => {
 
     dropZoneElement.classList.remove("drop-zone--over");
   });
-});*/
+});
